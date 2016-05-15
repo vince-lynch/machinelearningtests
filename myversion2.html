@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>q-learning.js test 2</title>
+    <meta name="description" content="Q-learning algorithm implementation and example in Javascript">
+    <meta name="keywords" content="Q-Learning, javascript, game">
+    <style>
+        body {
+            font-family: monospace;
+            font-size: 120%;
+            padding: 5%;
+        }
+        canvas {
+            border: 2px solid black;
+            width: 300px;
+            margin: 1% auto 1% auto;
+            display: block;
+        }
+        #buttons {
+            width: 300px;
+            margin: auto;
+            display: block;
+        }
+
+        #buttons * {
+            width: 25%;
+        }
+
+        #score {
+            text-align: right;
+        }
+    </style>
+    <script src="/js/q-learning.js"></script>
+</head>
+<body>
+
+<p>
+   <h2>My Version</h2>
+</p>
+<strong> current score is: <span id="scorecount"></span></strong>
+<canvas id="canvas" width="300px" height="300px"></canvas>
+<div id="buttons">
+    <button onclick="myStartFunction()">START</button>
+    <button onclick="myStopFunction()">PAUSE</button>
+    <button onclick="fast()">super FAST</button>
+    
+    <span id="score"></span>
+</div>
+<p>
+<strong>Poison Count is: <span id="poisoncount"></span></strong>
+<strong>Food Count is: <span id="foodcount"></span></strong>
+<br>
+<strong>Ratio: <span id="percentcount"></span>%</strong>
+
+<script src="/js/myversion2.js"></script>
+</body>
+</html>
