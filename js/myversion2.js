@@ -87,13 +87,6 @@ function AIrandomAction(){
  function moveRobot(){
   var radius = 15;
   context.beginPath();
-  // if robot off-screen
-  if (robot.column < 0){
-   robot.column = 9
-   } 
-  if (robot.column > 9){robot.column = 9
-   robot.column = 0;
-  }
   var rXaxis = robot.column * 30;
   var rYaxis = robot.line * 30;
   context.arc(rXaxis, rYaxis, radius, 0, 2 * Math.PI, false);
@@ -124,14 +117,15 @@ function AIrandomAction(){
       //set agents position
       column = (column + width) % width; //circular world
       robot.column = column;
+      console.log(column)
   };
 
   CurrentState = function(){
       //get a string representation of the objects in the 3x3 square in front of the agent
       var state = "S";
       var line, column;
-      for (var dcol = -1; dcol <= 1 ; dcol++){
-          for (var dline = -3; dline < 0 ; dline++){
+      for (var dline = -3; dline < 0 ; dline++){
+        for (var dcol = -1; dcol <= 1 ; dcol++){
               line = (robot.line + dline + height) % height;
               column = (robot.column + dcol + width) % width;
               state += board[line][column];
@@ -140,17 +134,6 @@ function AIrandomAction(){
       return state;
   };
 
-/*function getCurrentState(){
-   //console.log(this.agentPosition)
-   //get a string representation of the objects in the 3x3 square in front of the agent
-   leftofRobot = robot.column - 1
-   rightofRobot = (robot.column + 1);
-   stateArray1 = board[6].slice(leftofRobot, rightofRobot);
-   stateArray2 = board[7].slice(leftofRobot, rightofRobot);
-   stateArray3 = board[8].slice(leftofRobot, rightofRobot);
-   state = "S" + stateArray1 + stateArray2 + stateArray3;
-   return state = state.replace(/,/g , "");
-   }*/
 
 
  function drawCircle() {
@@ -164,12 +147,12 @@ function AIrandomAction(){
     }
     //action is a number -1,0,+1
     //apply the action
-    robotsetPosition(robot.column + action);
+    robotsetPosition(robot.column + Number(action));
     reward = 0;
     moveRobot()
     hasRobotTouched() // reward is defined here;
     var nextState = CurrentState();
-    console.log(currentState, nextState, reward, action);
+    //console.log(currentState, nextState, reward, action);
     learner.add(currentState, nextState, reward, action);
     learner.learn(10);
     var totalCollected = foodCount + poisonCount;
