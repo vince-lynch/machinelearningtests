@@ -1,6 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Ubuntu:400,500,700);
-@import url(http://fonts.googleapis.com/css?family=Orbitron:500,700,900);
-@import url(http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
+
 body * {
   box-sizing: border-box;
   /*   opacity: 0.8; */
@@ -8,7 +6,6 @@ body * {
 
 body {
   background: #E7F742;
-  /* background-image: url(http://upload.wikimedia.org/wikipedia/commons/c/c6/Nintendo_Gameboy.jpg); */
   background-size: calc(580px / 1.5), calc(950px / 1.5);
   background-repeat: no-repeat;
 }
