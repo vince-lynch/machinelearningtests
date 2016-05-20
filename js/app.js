@@ -19,6 +19,7 @@ var canvas = document.getElementById('canvas');
   exploration = 0.2; // explore
   width = 10; //cells
   height = 10; //cells
+  MOVES = [];
 
   robot = {
       line: this.height-1,
@@ -38,11 +39,60 @@ var canvas = document.getElementById('canvas');
           [0,0,0,0,0,0,0,0,0,0]];
 
 
+
+/// No Longer Required we are not using LocalStorage
+/*  storeMemory = function(){ // Store memory to LocalStorage (Cookie)
+    Qmemory = JSON.stringify(MOVES); 
+    localStorage.setItem("Qmemory", Qmemory);
+  }*/
+
+  downloadMemory = function(){ // as TXT file
+   var text = JSON.stringify(MOVES);
+   text = "STOREDMOVES = " + text; // get ready as an array.
+     var filename = "storedmoves"
+     var blob = new Blob([text], {type: "text/plain;charset=utf-8"});
+     saveAs(blob, filename+".js");
+  }
+
+loadfromStoredMoves = function(){ // From storedmoves.js
+var i = 0;
+while (i < STOREDMOVES.length){ // play out all moves from previously saved session
+ currentState = STOREDMOVES[i].currentState;
+ nextState = STOREDMOVES[i].nextState;
+ reward = STOREDMOVES[i].reward;
+ action = STOREDMOVES[i].action;
+ MOVES.push({currentState: currentState,nextState: nextState,reward: reward,action: action});
+ learner.add(currentState, nextState, reward, action);
+ learner.learn(10);
+ i++
+}
+console.log("finished loading: " + MOVES.length + " previous sessions moves")
+}
+
+/// No Longer Required we are not using LocalStorage
+/*loadfromMemory = function(){ // From LocalStorage Cookie
+fetchMemory = localStorage.getItem("Qmemory");
+fetchMemory = eval("(" + fetchMemory + ')');
+console.log(fetchMemory)
+var i = 0;
+while (i < fetchMemory.length){ // play out all moves from previously saved session
+ currentState = fetchMemory[i].currentState;
+ nextState = fetchMemory[i].nextState;
+ reward = fetchMemory[i].reward;
+ action = fetchMemory[i].action;
+ MOVES.push({currentState: currentState,nextState: nextState,reward: reward,action: action});
+ learner.add(currentState, nextState, reward, action);
+ learner.learn(10);
+ i++
+}
+console.log("finished loading previous sessions moves")
+}*/
+
+
 function AIrandomAction(){
     //actions are -1,0,+1
     return ~~(Math.random() * 3) - 1;
 };
-
 
  function endofCanvas(){ //deals with xAxis
   circles.forEach(function(circle) {
@@ -117,7 +167,7 @@ function AIrandomAction(){
       //set agents position
       column = (column + width) % width; //circular world
       robot.column = column;
-      console.log(column)
+     // console.log(column)
   };
 
   CurrentState = function(){
@@ -152,7 +202,7 @@ function AIrandomAction(){
     moveRobot()
     hasRobotTouched() // reward is defined here;
     var nextState = CurrentState();
-    //console.log(currentState, nextState, reward, action);
+    MOVES.push({currentState: currentState,nextState: nextState,reward: reward,action: action});
     learner.add(currentState, nextState, reward, action);
     learner.learn(10);
     var totalCollected = foodCount + poisonCount;
@@ -170,7 +220,7 @@ function AIrandomAction(){
    drawCircle();
   }, 200); 
  }
- myStartFunction();
+ //myStartFunction(); - START GAME
 
  function fast(){  // redo every 1ms
   redrawInterval2 = setInterval(function() {

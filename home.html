@@ -5,54 +5,82 @@
     <title>q-learning.js test 2</title>
     <meta name="description" content="Q-learning algorithm implementation and example in Javascript">
     <meta name="keywords" content="Q-Learning, javascript, game">
-    <style>
-        body {
-            font-family: monospace;
-            font-size: 120%;
-            padding: 5%;
-        }
-        canvas {
-            border: 2px solid black;
-            width: 300px;
-            margin: 1% auto 1% auto;
-            display: block;
-        }
-        #buttons {
-            width: 300px;
-            margin: auto;
-            display: block;
-        }
-
-        #buttons * {
-            width: 25%;
-        }
-
-        #score {
-            text-align: right;
-        }
-    </style>
+    <link href='https://fonts.googleapis.com/css?family=Exo' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+ 
+    <script type="text/javascript" src="/js/saveas.js"></script>
+    <script type="text/javascript" src="/js/storedmoves.js"></script>
     <script src="/js/q-learning.js"></script>
 </head>
 <body>
 
 <p>
-   <h2>My Version</h2>
+   <h2 style="text-align: center;
+    font-family: 'Exo', sans-serif;">Deep Q Learning Example</h2>
+    <span class="notes">Notes: The Black Ball is controlled by the Intelligent Q Learner, its rewarded when it eats the GREEN food, and punished when it consumes the Grey poison. It learns after around 30,000 games. To see what it looks like after 30,000 please previous save from memory.</span>
 </p>
-<strong> current score is: <span id="scorecount"></span></strong>
-<canvas id="canvas" width="300px" height="300px"></canvas>
-<div id="buttons">
+
+<div id="gameboy">
+  <div id="display-area">
+  <span id="dot-label"></span>
+  
+  <div class="infotext"><strong>score: <span id="scorecount"></span></strong>
+  <span id="score"></span>
+  <strong>Poison Count: <span id="poisoncount"></span></strong>
+  <strong>Food Count: <span id="foodcount"></span></strong>
+  <strong>Ratio: <span id="percentcount"></span>%</strong>
+  <canvas id="canvas" width="300px" height="300px" style="position: relative;top: -31px;"></canvas></div>
+    <div id="display"></div>
+  </div>
+  <div id="controls"> 
+    <div id="logo">
+      <span id="nintendo-text">Nintendo</span>
+      <span id="gameboy-text">GAMEBOY</span>
+    </div>
+    <div id="d-pad" onclick="fast()">
+      <div id="dip" onclick="fast()"></div>
+      <span id="speedUpBTN">SPEED UP</span>
+    </div>
+    <div id="ab-buttons">
+      <div class="round-btn"></div>
+      <div class="round-btn"></div>
+    </div>
+    <div id="ss-buttons">
+      <div class="long-btn" id="pausebtn" onclick="myStopFunction()"></div>
+      <div class="long-btn" id="startbtn" onclick="myStartFunction()"></div>
+    </div>
+  </div>
+  <div id="vent">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div> 
+
+
+
+<!-- <div id="buttons">
     <button onclick="myStartFunction()">START</button>
     <button onclick="myStopFunction()">PAUSE</button>
-    <button onclick="fast()">super FAST</button>
+    <button onclick="fast()">super FAST</button> -->
     
-    <span id="score"></span>
+<!--     <button onclick="storeMemory();">Save Memory (cookie)</button>
+    <button onclick="downloadMemory();">Download memory as TXT</button>
+    <button onclick="loadMemoryTXT()">Load from memory TXT</button>
+    <button onclick="loadfromMemory()">Load from memory (cookie)</button>
+ -->
+  <!--  <button onclick="loadfromStoredMoves()">Load from STOREDMOVES.js</button>-->
+
+
+
+   
 </div>
 <p>
-<strong>Poison Count is: <span id="poisoncount"></span></strong>
-<strong>Food Count is: <span id="foodcount"></span></strong>
-<br>
-<strong>Ratio: <span id="percentcount"></span>%</strong>
 
-<script src="/js/myversion2.js"></script>
+
+<script src="/js/app.js"></script>
 </body>
 </html>

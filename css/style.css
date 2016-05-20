@@ -1,0 +1,227 @@
+@import url(http://fonts.googleapis.com/css?family=Ubuntu:400,500,700);
+@import url(http://fonts.googleapis.com/css?family=Orbitron:500,700,900);
+@import url(http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
+body * {
+  box-sizing: border-box;
+  /*   opacity: 0.8; */
+}
+
+body {
+  background: #E7F742;
+  /* background-image: url(http://upload.wikimedia.org/wikipedia/commons/c/c6/Nintendo_Gameboy.jpg); */
+  background-size: calc(580px / 1.5), calc(950px / 1.5);
+  background-repeat: no-repeat;
+}
+
+span.notes {
+    display: block;
+    /* text-align: center; */
+    font-family: 'Exo', sans-serif;
+    position: relative;
+    margin: 0 auto;
+    padding: 12px 78px 12px 98px;
+    text-align: justify;
+}
+
+span#speedUpBTN {
+    position: relative;
+    top: 31px;
+    left: 10px;
+    /* text-align: center; */
+    font-family: 'Exo', sans-serif;
+}
+
+.infotext {
+  color: #AA9;
+      position: relative;
+      text-align: center;
+      font-family: 'Exo', sans-serif;
+      font-size: 12px;
+      /* font-weight: bold; */
+      top: 4px;
+}
+
+#gameboy {
+    overflow: auto;
+    width: calc(679px / 1.5);
+    height: calc(1211px / 1.5);
+    background: #C0BBB8;
+    border-radius: 15px 15px 90px 15px;
+    margin: 40px auto;
+    box-shadow: inset 0 -2px 5px 3px rgba(0, 0, 0, 0.3);
+}
+#display-area {
+  position: relative;
+  margin: 55px auto 0;
+  width: 84%;
+  height: 38%;
+  background: #535460;
+  border-radius: 15px 15px 40px 15px;
+  box-shadow: inset 0 2px 5px 2px rgba(0, 0, 0, 0.3);
+}
+#display-area #dot-label {
+  position: relative;
+  margin-top: 10px;
+  margin-left: 5%;
+  width: 90%;
+  display: block;
+  height: 8px;
+  border-top: 2px solid #7D0641;
+  border-bottom: 2px solid #12187C;
+  z-index: 99;
+}
+#display-area #dot-label:after {
+  z-index: 100;
+  top: -2px;
+  right: 14%;
+  position: absolute;
+  content: "DOT MATRIX WITH STEREO SOUND";
+  color: #AAA;
+  font-size: 10px;
+  line-height: 8px;
+  padding: 0 5px;
+  background: #535460;
+  font-family: "Lato", sans-serif;
+}
+#display-area #display {
+    /* position: relative; */
+    /* margin: 3% auto 0; */
+    /* background: #435513; */
+    /* width: 62%; */
+    /* height: 78%; */
+    /* border: 1px solid #333; */
+    /* border-radius: 2px; */
+    /* box-shadow: inset 0 2px 5px 2px rgba(0, 0, 0, 0.3); */
+}
+
+#controls {
+  margin: 5px auto 0;
+  width: 84%;
+  height: 46%;
+}
+#controls #logo {
+  font-size: 1.2em;
+  color: #12187C;
+}
+#controls #logo #nintendo-text {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+#controls #logo #gameboy-text, #controls #logo #gameboy-text:after {
+  font-family: "Lato", sans-serif;
+  font-size: 1.4em;
+  font-style: italic;
+  font-weight: 600;
+}
+#controls #logo #gameboy-text:after {
+  content: "TM";
+  font-size: 0.3em;
+  font-style: normal;
+  font-weight: 700;
+}
+#controls #d-pad {
+  float: left;
+  margin-top: 85px;
+  position: absolute;
+  width: 90px;
+  height: 30px;
+  background: #0A0B17;
+  border-radius: 3px;
+}
+#controls #d-pad:before, #controls #d-pad:after {
+  position: absolute;
+  top: -100%;
+  left: 30px;
+  width: 30px;
+  height: 30px;
+  background: #0A0B17;
+  content: "";
+  border-radius: 3px 3px 0 0;
+}
+#controls #d-pad:after {
+  top: 100%;
+  border-radius: 0 0 3px 3px;
+}
+#controls #d-pad #dip {
+  margin: 2px auto;
+  width: 26px;
+  height: 26px;
+  background: white;
+  opacity: 0.2;
+  border-radius: 50%;
+}
+#controls #ab-buttons {
+    float: left;
+    margin: 60px -5px 0 227px;
+    box-sizing: content-box;
+    -webkit-transform: rotate(-25deg);
+    transform: rotate(-25deg);
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 48px;
+    width: 115px;
+    padding: 5px;
+    height: 48px;
+}
+#controls #ab-buttons .round-btn {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  background: #7D0641;
+  border-radius: 50%;
+}
+#controls #ab-buttons .round-btn:first-child {
+  float: left;
+}
+#controls #ab-buttons .round-btn:first-child:after, #controls #ab-buttons .round-btn:last-child:after {
+  font-size: 0.8em;
+  position: absolute;
+  top: 125%;
+  left: calc(50% - 0.2em);
+  content: "LOAD";
+  font-family: "Orbitron", sans-serif;
+  font-weight: 800;
+  color: #12187C;
+}
+#controls #ab-buttons .round-btn:last-child {
+  float: right;
+}
+#controls #ab-buttons .round-btn:last-child:after {
+  content: "FROM MEMORY";
+}
+#controls #ss-buttons {
+    margin: 222px 0 0px 116px;
+    width: 110px;
+    height: auto;
+}
+#controls #ss-buttons .long-btn {
+  -webkit-transform: rotate(-25deg);
+          transform: rotate(-25deg);
+  position: relative;
+  width: 48px;
+  height: 12px;
+  background: #6D6B73;
+  border-radius: 6px;
+  font-size: 0.7em;
+}
+#controls #ss-buttons .long-btn:first-child {
+  float: left;
+}
+#controls #ss-buttons .long-btn:first-child:after, #controls #ss-buttons .long-btn:last-child:after {
+  position: absolute;
+  top: 140%;
+  content: "PAUSE";
+  font-family: "Orbitron", sans-serif;
+  font-weight: 800;
+  color: #12187C;
+}
+#controls #ss-buttons .long-btn:last-child {
+  float: right;
+}
+#controls #ss-buttons .long-btn:last-child:after {
+  content: "START";
+}
+#controls #vent {
+  width: 400px;
+  height: 200px;
+}
